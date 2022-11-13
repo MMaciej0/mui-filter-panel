@@ -11,8 +11,9 @@ export const FilterProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedCuisines, setSelectedCuisines] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 4350]);
 
-  console.log(selectedCategories, selectedCuisines);
+  console.log(priceRange);
   return (
     <FilterContext.Provider
       value={{
@@ -24,6 +25,8 @@ export const FilterProvider = ({ children }) => {
         cuisinesList,
         selectedCuisines,
         setSelectedCuisines,
+        priceRange,
+        setPriceRange,
       }}
     >
       {children}

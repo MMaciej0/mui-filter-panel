@@ -3,6 +3,7 @@ import { Box, Typography } from '@mui/material';
 import StandAloneToggleBtns from './common/StandAloneToggleButtons/StandAloneToggleBtns';
 import CheckboxBtns from './common/CheckboxBtns/CheckboxBtns';
 import { useFilterContext } from '../contexts/filterContext/filterContext';
+import PriceSlider from './common/PriceSlider/PriceSlider';
 
 const FilterPanel = () => {
   const {
@@ -12,6 +13,8 @@ const FilterPanel = () => {
     setSelectedCategories,
     selectedCuisines,
     setSelectedCuisines,
+    priceRange,
+    setPriceRange,
   } = useFilterContext();
   return (
     <Box flex={1} p={2} sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -36,6 +39,12 @@ const FilterPanel = () => {
           state={selectedCuisines}
           setState={setSelectedCuisines}
         />
+      </Box>
+      <Box>
+        <Typography variant="h6" sx={{ paddingBlock: '1rem' }}>
+          Price:
+        </Typography>
+        <PriceSlider priceRange={priceRange} setPriceRange={setPriceRange} />
       </Box>
     </Box>
   );
