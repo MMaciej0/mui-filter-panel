@@ -27,6 +27,11 @@ export const FilterProvider = ({ children }) => {
     if (selectedCuisines.length > 0) {
       output = filterByProp(output, selectedCuisines, 'cuisine');
     }
+    if (searchValue) {
+      output = output.filter((item) =>
+        item.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }
     // price range
     const minPrice = priceRange[0];
     const maxPrice = priceRange[1];
@@ -35,7 +40,7 @@ export const FilterProvider = ({ children }) => {
     );
 
     setDataList(output);
-  }, [selectedCategories, selectedCuisines, priceRange]);
+  }, [selectedCategories, selectedCuisines, priceRange, searchValue]);
 
   return (
     <FilterContext.Provider
